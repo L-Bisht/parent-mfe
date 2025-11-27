@@ -15,7 +15,6 @@ export default defineConfig({
         build: "src/importMap.prod.json",
       },
       imo: "4.2.0",
-      imoUi: "popup",
     }),
   ],
 
