@@ -1,5 +1,5 @@
 {
   "imports": {
-    "@org/child-mfe": "https://child-mfe-git-main-lbisht1996-gmailcoms-projects.vercel.app/single-spa-app.js"
+    "@org/child-mfe": "https://child-mfe.vercel.app/single-spa-app.js"
   }
 }
