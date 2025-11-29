@@ -1,5 +1,9 @@
 {
   "imports": {
+    "react": "https://cdn.jsdelivr.net/npm/react@19.2.0/+esm",
+    "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@19.2.0/+esm",
+    "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/single-spa.min.js",
+    "single-spa-react": "https://cdn.jsdelivr.net/npm/single-spa-react@6.0.2/+esm",
     "@org/child-mfe": "https://child-mfe.vercel.app/mfe/single-spa-app.js"
   }
 }
