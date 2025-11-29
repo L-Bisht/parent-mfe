@@ -29,6 +29,11 @@ export default defineConfig({
     },
   },
 
+  define: {
+    // Define process object for child MFEs that expect it
+    "process.env.NODE_ENV": JSON.stringify("production"),
+  },
+
   server: {
     port: 9000,
   },

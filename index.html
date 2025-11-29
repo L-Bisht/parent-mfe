@@ -8,6 +8,16 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Polyfill process for child MFEs -->
+    <script>
+      if (typeof process === 'undefined') {
+        window.process = {
+          env: {
+            NODE_ENV: 'production'
+          }
+        };
+      }
+    </script>
     <!-- Import map for module resolution -->
     <script type="importmap" src="/src/importMap.dev.json"></script>
     <script type="module" src="/src/main.tsx"></script>
