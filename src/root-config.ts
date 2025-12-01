@@ -1,11 +1,12 @@
-// src/root-config.ts
 import { registerApplication, start } from "single-spa";
+
+// Use Function to dynamically create import, hiding it from Vite's static analysis
+const importMfe = () => new Function('return import("@org/child-mfe")')();
 
 registerApplication({
   name: "@org/child-mfe",
-  // 👇 IMPORTANT: tell Vite to NOT try to resolve this specifier
-  app: () => import(/* @vite-ignore */ "@org/child-mfe"),
-  activeWhen: (location) => location.pathname.startsWith("/"),
+  app: importMfe,
+  activeWhen: "/",
 });
 
 start();

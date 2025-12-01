@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "@org/child-mfe": "https://child-mfe.vercel.app/mfe/single-spa-app.js"
+  }
+}

@@ -1,24 +1,19 @@
-// vite.config.ts (parent-mfe)
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
-import vitePluginSingleSpa from "vite-plugin-single-spa";
+
+// Plugin to exclude external MFE modules from Vite's resolution
+const externalMfePlugin: Plugin = {
+  name: "external-mfe",
+  resolveId(id: string) {
+    if (id === "@org/child-mfe") {
+      return { id, external: true };
+    }
+  },
+};
 
 export default defineConfig({
-  plugins: [
-    react(),
-    vitePluginSingleSpa({
-      type: "root",
-      // you can omit this if you’re using the default names:
-      // src/importMap.dev.json and src/importMap.json
-      importMaps: {
-        dev: "src/importMap.dev.json",
-        build: "src/importMap.prod.json",
-      },
-      imo: "4.2.0",
-    }),
-  ],
+  plugins: [externalMfePlugin, react()],
 
-  // optional but nice: don't even *try* to pre-bundle the remote MFE
   optimizeDeps: {
     exclude: ["@org/child-mfe"],
   },
@@ -29,12 +24,12 @@ export default defineConfig({
     },
   },
 
-  define: {
-    // Define process object for child MFEs that expect it
-    "process.env.NODE_ENV": JSON.stringify("production"),
-  },
-
   server: {
     port: 9000,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
 });
+
+

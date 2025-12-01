@@ -1,21 +1,25 @@
-// src/main.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./root-config"; // this will register apps and start single-spa
+import "./index.css";
+import "./root-config";
 
-export const RootShell: React.FC = () => {
+function App() {
   return (
-    <>
-      <header style={{ padding: "1rem", borderBottom: "1px solid #ddd" }}>
-        <h1>Root MFE Shell</h1>
+    <div style={{ fontFamily: "system-ui, sans-serif", padding: "2rem" }}>
+      <header style={{ borderBottom: "1px solid #ccc", paddingBottom: "1rem", marginBottom: "2rem" }}>
+        <h1>Parent MFE</h1>
+        <p>Root application shell for micro-frontends</p>
       </header>
 
-      {/* Single-spa apps mount directly into DOM; you can provide layout slots */}
-      <main id="single-spa-container" style={{ padding: "1rem" }} />
-    </>
+      <main>
+        <div id="single-spa-container" style={{ minHeight: "400px", padding: "1rem", border: "1px solid #ddd" }} />
+      </main>
+    </div>
   );
-};
+}
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <RootShell />
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
